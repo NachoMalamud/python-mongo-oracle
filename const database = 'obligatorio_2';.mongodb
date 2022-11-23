@@ -1,0 +1,67 @@
+const database = 'obligatorio_2';
+const collection = 'mediciones';
+
+// Create a new database.
+use(database);
+
+// Create a new collection.
+db.createCollection(collection, {
+  validator: {
+    $jsonSchema: {
+    bsonType: "object",
+    required: ["fecha_medida", "numero_serie", "modelo"],
+    properties: {
+      fecha_medida: {
+        bsonType: "date",
+        description: "el tipo debe ser date"
+      },
+      numero_serie: {
+        bsonType: "int",
+        description: "el tipo debe ser int",
+      },
+      temperatura: {
+        bsonType: "int",
+        description: "el tipo debe ser int",
+      },
+      voltaje: {
+        bsonType: "int",
+        description: "el tipo debe ser int",
+      },
+      velocidad: {
+        bsonType: "int",
+        description: "el tipo debe ser int",
+      },
+      presion: {
+        enum: ["Baja", "Normal", "Alta"],
+        description: "los valores permitidos son Baja, Normal, Alta",
+      },
+      vibracion: {
+        enum: ["Rojo", "Naranja", "Amarillo", "Verde"],
+        description: "los valores permitidos son Rojo, Naranja, Amarillo, Verde",
+        },
+      modelo: {
+        enum: ["X", "Y", "S"],
+        description: "los valores de modelo pueden ser X, Y, S",
+        },
+        ubicacion: {
+          bsonType: ["array"],
+          description: "los datos ingresados no son validos.",
+          items: { bsonType: "object" },
+          required:["latitud", "longitud"],
+          properties: {
+            latitud: 
+            {
+              bsonType: "double",
+              description: "el tipo de dato de latitud debe ser double",
+            },
+            longitud: 
+            {
+              bsonType: "double",
+              description: "el tipo de dato de longitud debe ser double",
+            },
+          }
+        }
+      }
+    }
+  }
+})

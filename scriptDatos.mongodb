@@ -1,0 +1,81 @@
+const database = 'obligatorio_2';
+
+// Create a new database.
+use(database);
+
+//DATOS OK
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 1, modelo: "X"
+})
+
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20
+})
+
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 3, modelo: "X", temperatura: 20, voltaje: 10
+})
+
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20,
+voltaje: 10, presion: "Baja"
+})
+
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20,
+voltaje: 10, vibracion: "Rojo"
+})
+
+db.mediciones.insertOne({
+fecha_medida: new Date, numero_serie: 1, modelo: "X", temperatura: 20,
+voltaje: 10, vibracion: "Rojo", ubicacion: [{longitud: 2.0}, {latitud: 3.0}]
+})
+
+// //DATOS FALLAN
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 3 //sin modelo
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, modelo: "X" //sin numero de serie
+// })
+
+// db.mediciones.insertOne({
+// numero_serie: 2, modelo: "X" //sin fecha
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 2, modelo: "a" //modelo no cumple enumerado
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: "falla fecha", numero_serie: 1, modelo: "X" //fecha debe ser date
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 3, modelo: "X", temperatura: "falla temperatura" //dato debe ser int.
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20, voltaje: "falla voltaje" //dato debe ser int
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 1, modelo: "X", temperatura: 20,
+// voltaje: 10, presion: "no cumple enum" //no cumple enumerado.
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20,
+// voltaje: 10, vibracion: "no cumple enum" //no cumple enumerado.
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 2, modelo: "X", temperatura: 20,
+// voltaje: 10, vibracion: "Rojo", ubicacion: [2.0, 3.0] //datos del array no son documentos.
+// })
+
+// db.mediciones.insertOne({
+// fecha_medida: new Date, numero_serie: 1, modelo: "X", temperatura: 20,
+// voltaje: 10, vibracion: "Rojo", ubicacion: [{test: 2.0}, {latitud: 3.0}] //debe tener clave longitud y latitud.
+// })
